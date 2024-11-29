@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html class="pixel-ratio-1">
+    <body onload="Decrypt_User()"></body>
+    <head>
+    <title>李端棻中学运动会管理系统</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link href="css/weui.min.css" rel="stylesheet">
+    <link href="css/jquery-weui.css" rel="stylesheet">
+    <link href="css/weixin_lv.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/viewer.min.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/viewer.min.js"></script>
+    <script src="js/jquery-weui.min.js"></script>
+    <script src="js/weui.min.js"></script>
+    <script src="js/jquery.cookie.min.js"></script>
+    <link href="css/layer.css" rel="stylesheet">
+    <script>
+    Decrypt_User = function()
+    {
+        if ($.cookie('Session') != null)
+        {
+            $.ajax(
+                {
+                    url: 'https://ydh.ldfzxxsh.cyou:20180/decrypt/User',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        Session: $.cookie('Session')
+                    },
+                    success: function(response)
+                    {
+                        if (response['res'])
+                        {
+                            document.getElementById("User").value = response['User'];
+                        } else {
+                            $.toast("登录已过期！", "forbidden");
+                            setTimeout("$.removeCookie('Session');location.href='Login.html'",1000);
+                        }
+                    },
+                    error: function()
+                    {
+                        $.toast("服务器异常！", "forbidden");
+                    }
+                });
+        }
+    }
+    Upload = function()
+    {
+        if (document.getElementById("Score").value !== "" && document.getElementById("Score").value <= 10 && document.getElementById("Score").value >= 0 && document.getElementById("Class").value != null)
+        {
+            $.confirm("您确定要提交吗?", "提交", function() {
+                Decrypt_User();
+                $.ajax(
+                    {
+                        url: 'https://ydh.ldfzxxsh.cyou:20180/upload/Class_Score',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: {
+                            Session: $.cookie('Session'),
+                            Class: document.getElementById("Class").value,
+                            Score: document.getElementById("Score").value
+                        },
+                        success: function(response)
+                        {
+                            if (response['res'])
+                            {
+                                $.toast("提交成功!");
+                                setTimeout("window.location.reload()",1000);
+                            } else {
+                                $.alert(response['message']);
+                            }
+                        },
+                        error: function()
+                        {
+                            $.toast("服务器异常！", "forbidden");
+                        }
+                    })
+            }, function() {
+                $.toast("已取消操作", "cancel");
+            });
+        }else{
+            $.alert('请正确填写内容!');
+        }
+    }
+</script>
+        <style>
+            .filter-box {
+                width: calc(60vw);
+                height: 34px;
+                background-color: #ffffff;
+                border: solid 1px #dcdcdc;
+                font-size: 15px;
+                font-weight: normal;
+                font-style: normal;
+                font-stretch: normal;
+                letter-spacing: normal;
+                text-align: left;
+                color: #3d3d3d;
+                padding-left: 10px;
+                border-color: #dcdcdc;
+                -webkit-appearance: none;
+            }
+
+            select {
+                background-image: url(./image/backdropdown.png);
+                background-position: calc(60vw - 20px) 9px;
+                font-size: 15px;
+                color: #3d3d3d;
+                background-repeat: no-repeat;
+            }
+
+            .required-star {
+                color: red;
+            }
+
+            @-webkit-keyframes spin {
+                to {
+                    -webkit-transform: rotate(360deg);
+                    transform: rotate(360deg);
+                }
+            }
+
+            @keyframes spin {
+                to {
+                    -webkit-transform: rotate(360deg);
+                    transform: rotate(360deg);
+                }
+            }
+
+            .div-waiting{
+                position: fixed;
+                z-index: 998;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                opacity: 1;
+                background: rgba(255, 255, 255, 0.5);
+                vertical-align: middle;
+                text-align: center;
+            }
+
+            .icon-waiting{
+                position: relative;
+                top: calc(35vh);
+                width: calc(10vh);
+                height: calc(10vh);
+                margin: 0 auto;
+                border-radius: 50%;
+                border: 0.5rem solid rgb(225, 225, 225);
+                border-top-color: #1cac19;
+                -webkit-animation: 1.5s spin infinite linear;
+                animation: 1.5s spin infinite linear;
+            }
+
+            .icon-position{
+                position: relative;
+                top: 48%;
+                margin: 0 auto;
+                font-size: 30px;
+            }
+        </style>
+    </head>
+<script src="js/layer.js"></script>
+
+
+<div class="tab1">
+    <div class="weui-cells__title">请输入评分信息进行提交
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">评分标准<span class="required-star">*</span></label></div>
+                <div class="weui-cell__bd">
+                    <img src='./Image/Rules.jpg' alt="暂无评分标准" style="width: calc(57.5vw);height: auto;border-radius: 5%">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">教师账号<span class="required-star">*</span></label></div>
+                <div class="weui-cell__bd">
+                    <input readonly="readonly" autocomplete="off" class="weui-input" id="User" placeholder="账号" type="text" value="">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">班级<span class="required-star">*</span></label></div>
+                <div class="weui-cell__bd">
+                    <select class="filter-box" id="Class">
+	    <optgroup label="2024级">
+                        <option value="2024级1班" selected="selected">2024级1班</option>
+                        <option value="2024级2班">2024级2班</option>
+                        <option value="2024级3班">2024级3班</option>
+                        <option value="2024级4班">2024级4班</option>
+                        <option value="2024级5班">2024级5班</option>
+                        <option value="2024级6班">2024级6班</option>
+                        <option value="2024级7班">2024级7班</option>
+                        <option value="2024级8班">2024级8班</option>
+                        <option value="2024级9班">2024级9班</option>
+                        <option value="2024级10班">2024级10班</option>
+                        <option value="2024级11班">2024级11班</option>
+                        <option value="2024级12班">2024级12班</option>
+	    </optgroup>
+	    <optgroup label="2023级">
+                        <option value="2023级1班">2023级1班</option>
+                        <option value="2023级2班">2023级2班</option>
+                        <option value="2023级3班">2023级3班</option>
+                        <option value="2023级4班">2023级4班</option>
+                        <option value="2023级5班">2023级5班</option>
+                        <option value="2023级6班">2023级6班</option>
+                        <option value="2023级7班">2023级7班</option>
+                        <option value="2023级8班">2023级8班</option>
+                        <option value="2023级9班">2023级9班</option>
+                        <option value="2023级10班">2023级10班</option>
+                        <option value="2023级11班">2023级11班</option>
+	    </optgroup>
+	    <optgroup label="2022级">
+                        <option value="2022级1班">2022级1班</option>
+                        <option value="2022级2班">2022级2班</option>
+                        <option value="2022级3班">2022级3班</option>
+                        <option value="2022级4班">2022级4班</option>
+                        <option value="2022级5班">2022级5班</option>
+                        <option value="2022级6班">2022级6班</option>
+                        <option value="2022级7班">2022级7班</option>
+                        <option value="2022级8班">2022级8班</option>
+                        <option value="2022级9班">2022级9班</option>
+                        <option value="2022级10班">2022级10班</option>
+                        <option value="2022级11班">2022级11班</option>
+	    </optgroup>
+                    </select>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">评分结果<span class="required-star">*</span></label></div>
+                <div class="weui-cell__bd">
+                    <input autocomplete="off" class="weui-input" id="Score" placeholder="分数" type="number" max="10" min="0" value="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<p class="weui-btn-area" align="center">
+    <a class="weui-btn weui-btn_primary" href="javascript:Upload()">提交</a>
+    <br>
+    <a class="weui-btn weui-btn_primary" href="javascript:$.removeCookie('Session');location.href='Login.html'">退出登录</a>
+    <br>
+    <a class="weui-btn weui-btn_primary" href="javascript:location.href='Change_Password.html'">修改密码</a>
+    <br>
+    <font color="#9999CC">技术支持：2023级10班朱天宇</font>
+    <br>
+    <font color="#9999CC">Copyright © 2024 Liduanfen Middle School.</font>
+</p>
+</html>
