@@ -1,0 +1,606 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+header {
+    background-color: #1cac19;
+    height: 50px;
+    /*overflow: hidden;*/
+    /*border-bottom:1px solid #3186e1;*/
+    position: fixed;
+    top: 0px;
+    _position: absolute;
+    _top: expression_r(documentElement.scrollTop + "px");
+    width: 100%;
+    z-index: 99;
+    min-width: 300px;
+}
+    header p:first-child {
+        float: left;
+        color: #fff;
+        font-size: 18px;
+        line-height: 50px;
+        padding-left: 15px;
+        position: absolute;
+        /*top:15px;*/
+    }
+    header span {
+        background: url(../images/Mcommon_b/class_icon2.jpg) no-repeat right 15px;
+        padding-right: 30px;
+        font-size: 20px;
+        color: #fff;
+        padding: 15px;
+        /*position:absolute;
+ left:10px;
+ right:auto;
+ top:10px;*/
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        cursor: pointer
+    }
+.backbtn p:first-child {
+    /*background:url(../images/Mcommon_b/backbtn.png) 15px center no-repeat;*/
+    margin-left: 30px;
+    height: 50px;
+    line-height: 50px;
+}
+.grad1 {
+    background: -webkit-linear-gradient(#1cac19 60%,#1cac19); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#1cac19 60%,#1cac19); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#1cac19 60%,#1cac19); /* Firefox 3.6 - 15 */
+    background: linear-gradient(#1cac19 60%,#1cac19); /* 标准的语法（必须放在最后） */
+    background: #1cac19 url(../images/wxyktlogo.png) no-repeat center left;
+    background-size: 100%;
+    text-shadow: 1PX 1PX 1PX #000;
+}
+
+/*.backbtn a {
+    width: 50px;
+    height: 50px;
+    background-color: #1cac19;
+    float: left;
+    padding-left: 15px;
+    line-height: 50px;
+    padding-top: 12px;
+    cursor: pointer;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}*/
+    /*.backbtn p:last-child a{width:auto;}*/
+    .backbtn a:hover {
+        background-color: #1cac19;
+    }
+.backbtn a {
+    width: 20px;
+    height: 20px;
+    background-color: #1cac19;
+    float: left;
+    /*padding-left:15px;*/
+    line-height: 50px;
+    /*padding-top:12px;*/
+    /*margin: 15px 15px 15px 15px;*/
+    cursor: pointer;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+    .b_backbtn {
+    width: 20px;
+    height: 20px;   
+    float: left;
+    /*padding-left:15px;*/
+    line-height: 50px;
+    /*padding-top:12px;*/
+    margin: 15px 12px 15px 12px;
+    cursor: pointer;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    background:url(../images/Mcommon_f/backbtn.png) no-repeat center center;
+    background-size:100% 100%;
+}
+.btn-primary.focus, .btn-primary:focus {
+    color: #fff;
+    background-color: #1cac19;
+    border-color: #1fa423
+}
+
+.btn-primary:hover {
+    background-color: #1cac19;
+    border-color: #1fa423;
+    color: #fff;
+}
+
+.btn-primary.active, .btn-primary:active, .open > .dropdown-toggle.btn-primary {
+    color: #fff;
+    background-color: #1cac19;
+    border-color: #1fa423
+}
+
+    .btn-primary.active.focus, .btn-primary.active:focus, .btn-primary.active:hover, .btn-primary:active.focus, .btn-primary:active:focus, .btn-primary:active:hover {
+        color: #fff;
+        background-color: #1cac19;
+        border-color: #1fa423
+    }
+
+.btn-primary {
+    background-color: #1cac19;
+    border-color: #1fa423;
+    color: #fff;
+}
+
+.grad1 {
+    background: -webkit-linear-gradient(#1cac19 60%,#3cb728); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#1cac19 60%,#3cb728); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#1cac19 60%,#3cb728); /* Firefox 3.6 - 15 */
+    background: linear-gradient(#1cac19 60%,#3cb728); /* 标准的语法（必须放在最后） */
+}
+
+p:last-child a.b_choose {
+    background: url(../images/Mcommon_b/choose_icon2.jpg) no-repeat center center;
+    width: 40px;
+    height: 40px;
+    display: block;
+    background-size: 40px 40px;
+   
+}
+
+a.b_choose {
+    background: url(../images/Mcommon_b/choose_icon2.jpg) no-repeat center center;
+    width: 40px;
+    height: 40px;
+    display: block;
+    background-size: 40px 40px;
+}
+
+
+
+
+/*日期*/
+
+
+.ios7 .dwb {
+    margin: 0;
+    padding: 0 10px;
+    display: inline-block;
+    color: #000;
+    text-shadow: none;
+    font-size: 17px;
+    font-weight: normal;
+    background: none;
+    -webkit-border-radius: 0;
+    -webkit-box-shadow: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+
+.fwmc_xxk li.on {
+    color: #1cac19;
+    border: 1px solid #1cac19;
+}
+
+.fwmc_xxk li i {
+    font-style: normal;
+    line-height: 52px;
+}
+
+.fwmc_xxk li.on i.icon-corner-checked {
+    position: absolute;
+    right: 0px;
+    top: -1px;
+    background: url(../images/weixin/fwkk1.png) no-repeat center;
+    width: 25px;
+    z-index: 99;
+    height: 25px;
+}
+
+.fwmc_xxk li.on p {
+    color: #1cac19;
+}
+
+input.other {
+    border: 1px solid #ddd;
+    height: 50px;
+    width: 100%;
+    color: #1cac19;
+}
+
+input:focus {
+    outline: none;
+    /*border: 1px solid #1cac19;*/
+}
+
+
+.yktmidbox {
+    background: #1cac19;
+    padding: 50px 20px 10px 20px;
+    background: #1cac19 url(../images/wxyktlogo.png) no-repeat center left;
+    background-size: 100%;
+    text-shadow: 1PX 1PX 1PX #000;
+}
+
+
+/*.course_bg {
+background:url(../images/weixin/course1.jpg) 0px 0px no-repeat;
+width:100%;
+position:relative;
+background-size:100% 100%;
+padding-bottom:40px;
+}*/
+/*一周课表*/
+.cbox {
+    width: 100%;
+    height: 100px;
+    /*border-radius: 5px;*/
+    /*box-shadow: 0 2px 30px rgba(0, 0, 0, 0.2);*/
+    background: #1cac19;
+    position: relative;
+    overflow: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+.cwave {
+    opacity: .4;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: #84ce43;
+    width: 800px;
+    height: 900px;
+    margin-left: -300px;
+    margin-bottom: -80px;
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    border-radius: 43%;
+    -webkit-animation: drift 10000ms infinite linear;
+    animation: drift 10000ms infinite linear;
+}
+
+    .cwave.-three {
+        -webkit-animation: drift 8000ms infinite linear;
+        animation: drift 8000ms infinite linear;
+        margin-left: -400px;
+        margin-bottom: -65px;
+        opacity: .4;
+    }
+
+    .cwave.-two {
+        -webkit-animation: drift 8000ms infinite linear;
+        animation: drift 8000ms infinite linear;
+        opacity: .1;
+        background: yellow;
+    }
+
+.box:after {
+    content: '';
+    display: block;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: -webkit-linear-gradient(top, #3b8de3, rgba(221, 238, 255, 0) 80%, rgba(255, 255, 255, 0.5));
+    background: linear-gradient(to bottom, #3b8de3, rgba(221, 238, 255, 0) 80%, rgba(255, 255, 255, 0.5));
+    z-index: 11;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+@-webkit-keyframes drift {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    from {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes drift {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    from {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+.fwdz {
+    text-align: center;
+    border: 1px solid #1cac19;
+    box-shadow: inset 0px 1px 0px #fff;
+    color: #1cac19;
+    line-height: 30px;
+}
+
+.address2 {
+    border-bottom: 1px solid #e3e3e3;
+    top: 50px;
+    background-color: #1cac19;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+}
+
+.lcimg {
+    display: block;
+    width: 30px;
+    background: url(../images/weixin/lc_icon.png) no-repeat top center;
+    background-size: 100% 100%;
+}
+
+.weui-grid__icon img {
+    border-radius: 0px;
+}
+
+.back {
+    padding-top: 120px;
+    background: url("../images/weixin/back.png") no-repeat center center;
+    background-size: 100% 100%;
+    width: 130px;
+    display: inline-block;
+}
+
+.fz8e {
+    color: #8e8e8e
+}
+
+#editor-btn {
+    background-color: #1cac19;
+    border-color: #1cac19;
+}
+
+/*p:last-child a.b_publish:hover {
+    width: 35px;
+    display: block;
+    background-color: #1cac19;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -o-box-shadow: none;
+    -ms-box-shadow: none;
+}*/
+p:last-child a.b_publish {
+    background: url(../images/Mcommon_f/add.png) no-repeat left top;
+    width: 20px;
+    height: 20px;
+    display: block;
+    background-size: 100% 100%;
+    margin: 15px 15px 15px 15px
+}
+input.nolineinput {
+    /*font-size: 16px;
+    margin-bottom: 0px;
+    background-color: #fff;
+    box-shadow: none;
+    vertical-align: top;
+    color: #888888*/
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 16px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s
+}
+
+    input.nolineinput :focus {
+        border-color: #66afe9;
+        outline: 0;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
+    }
+
+    input.nolineinput::-moz-placeholder {
+        color: #999;
+        opacity: 1
+    }
+
+    input.nolineinput:-ms-input-placeholder {
+        color: #999
+    }
+
+    input.nolineinput::-webkit-input-placeholder {
+        color: #999
+    }
+
+textarea.nolineinput {
+    /*font-size: 16px;
+    margin-bottom: 0px;
+    background-color: #fff;
+    box-shadow: none;
+    vertical-align: top;
+    padding: 4px 0px;
+    color: #888888*/
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 16px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s
+}
+
+input.nolineinput1 {
+    font-size: 16px;
+    margin-bottom: 0px;
+    border: 0px;
+    background-color: #fff;
+    box-shadow: none;
+    vertical-align: central;
+    color: #888888
+}
+
+.lyadd {
+    padding: 0px;
+    flex: 1;
+}
+
+/*个人中心*/
+.headimgbox {
+    background-color: #1cac19;
+    padding-top: 70px;
+    padding-bottom: 40px;
+    position: relative;
+    text-align: center;
+    width: 100%;
+}
+
+.headimg {
+    background: url("/images/headbg.png");
+    background-size: 100% 100%;
+    min-height: 100px;
+    background-repeat: no-repeat;
+}
+
+.headerpotobox {
+    width: 64px;
+    height: 64px;
+    overflow: hidden;
+    background-color: #fff;
+    border: 1px solid #fff;
+    padding: 1px;
+    border-radius: 10px;
+    margin: 5px auto;
+}
+
+.childpotobox {
+    width: 45px;
+    height: 45px;
+    overflow: hidden;
+    background-color: #fff;
+    border: 1px solid #f3f3f3;
+    padding: 1px;
+    border-radius: 8px;
+    margin: -10px auto;
+    position: relative
+}
+
+.childpoto {
+    width: 100%;
+    border-radius: 6px;
+    background: url("/images/Default.jpg");
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+}
+
+.headpoto {
+    width: 100%;
+    border-radius: 10px;
+    background: url("/images/face.jpg");
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+}
+
+.headimg label {
+    color: #fff;
+    font-weight: normal;
+}
+
+.idbg {
+    background-color: #018803;
+    color: #fff;
+    margin: 0 auto;
+    border-radius: 30px;
+    padding: 1px 15px;
+}
+
+.headradius {
+    border-radius: 8px;
+    background-color: #fff;
+    margin: -30px 15px 20px;
+    box-shadow: 0 0 4px rgba(62, 78, 94, 0.4);
+    height: 65px;
+    position: relative;
+    left: 0px;
+    right: 0px;
+    text-align: center;
+}
+
+    .headradius a {
+        /*width: 50%;*/
+        margin: 0 auto;
+        cursor: pointer
+    }
+
+    .headradius img {
+        width: 60%;
+    }
+
+.weixin_role li {
+    padding: .6em;
+    margin: 0 auto;
+    display: block;
+}
+.topline {
+    border-top: 5px solid #1cac19;
+}
+
+.slider-bg {
+    /*background-image:-webkit-gradient(linear,left bottom,left top ,from(#f1503b),color-stop(50%,#c82519);*/
+    background-image: -webkit-linear-gradient(bottom,#8BC34A,#1cac19 50%);
+    background-image: linear-gradient(0dge,#8BC34A,#1cac19 50%);
+    position: relative;
+    top: 0;
+    left: -25%;
+    height: 7.25rem;
+    width: 150%;
+    border-bottom-left-radius: 100%;
+    border-bottom-right-radius: 100%;
+}
+.slider-bg::after {
+    background-image: -webkit-linear-gradient(bottom,#8BC34A,#1cac19 50%);
+}
+
+.yuanjiao {
+    border-radius: 20px;
+    background-color: #d6fad5;
+    color: #333;
+}
+
+.ykt_seacher span:empty:before {
+    content: '无';
+    display: block;
+    width: 20px;
+    height: 20px;
+}
+.ykt_seacher i {
+    color: #1cac19;
+}
+
+.mui-btn-blue, .mui-btn-primary, input[type=submit] {
+    color: #fff;
+    border: 1px solid #1cac19 !important;
+    background-color: #1cac19 !important;
+}
