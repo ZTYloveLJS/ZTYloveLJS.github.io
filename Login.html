@@ -50,6 +50,7 @@
         var Password = document.getElementById("Password").value;
         if (User !== '' && Password !== '')
         {
+            $.showLoading('正在连接服务器...');
             $.ajax(
                 {
                     url: 'https://api.ldfzxxsh.cyou/login',
@@ -61,6 +62,7 @@
                     },
                     success: function(response)
                     {
+                        $.hideLoading();
                         if (response['res'])
                         {
                             $.cookie('Session', response['Session']);
@@ -71,6 +73,7 @@
                     },
                     error: function()
                     {
+                        $.hideLoading();
                         $.toast("服务器异常！", "forbidden");
                     }
                 });
