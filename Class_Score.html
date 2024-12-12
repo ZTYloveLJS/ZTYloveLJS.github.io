@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html class="pixel-ratio-1">
-    <body onload="Decrypt_User()"></body>
-    <head>
+<body onload="Decrypt_User()"></body>
+<head>
     <title>贵阳一中李端棻中学欢迎您！</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
     <link href="css/weui.min.css" rel="stylesheet">
     <link href="css/jquery-weui.css" rel="stylesheet">
     <link href="css/weixin_lv.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/viewer.min.css">
     <script src="js/jquery.min.js"></script>
-    <script src="js/viewer.min.js"></script>
     <script src="js/jquery-weui.min.js"></script>
     <script src="js/weui.min.js"></script>
     <script src="js/jquery.cookie.min.js"></script>
-    <link href="css/layer.css" rel="stylesheet">
     <script>
     Decrypt_User = function()
     {
+	$.showLoading();
         if ($.cookie('Session') != null)
         {
             $.ajax(
@@ -30,6 +28,7 @@
                     },
                     success: function(response)
                     {
+			$.hideLoading();
                         if (response['res'])
                         {
                             document.getElementById("User").value = response['User'];
@@ -40,10 +39,15 @@
                     },
                     error: function()
                     {
+			$.hideLoading();
                         $.toast("服务器异常！", "forbidden");
                     }
                 });
-        }
+        } else {
+	    $.hideLoading();
+	    $.toast("登录已过期！", "forbidden");
+            setTimeout("$.removeCookie('Session');location.href='Login.html'",1000);
+	}
     }
     Upload = function()
     {
