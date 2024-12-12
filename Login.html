@@ -50,7 +50,7 @@
         var Password = document.getElementById("Password").value;
         if (User !== '' && Password !== '')
         {
-            $.showLoading('正在连接服务器...');
+            $.showLoading();
             $.ajax(
                 {
                     url: 'https://api.ldfzxxsh.cyou/login',
