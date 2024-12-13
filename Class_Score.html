@@ -33,7 +33,7 @@
                         {
                             document.getElementById("User").value = response['User'];
                         } else {
-                            $.toast("登录已过期！", "forbidden");
+                            $.toast(response['message'], "forbidden");
                             setTimeout("$.removeCookie('Session');location.href='Login.html'",1000);
                         }
                     },
@@ -44,9 +44,9 @@
                     }
                 });
         } else {
-	    $.hideLoading();
-	    $.toast("登录已过期！", "forbidden");
-            setTimeout("$.removeCookie('Session');location.href='Login.html'",1000);
+		$.hideLoading();
+                $.toast("您还未登录！", "forbidden");
+                setTimeout("location.href='Login.html'",1000);
 	}
     }
     Upload = function()
