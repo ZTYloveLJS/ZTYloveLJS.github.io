@@ -23,6 +23,9 @@
 						url: 'https://api.ldfzxxsh.cyou/Administrator/Search',
 						type: 'POST',
 						dataType: 'json',
+						data: {
+							Grade:
+					   	},
 						success: function (response) {
 							var cate = response['keys'];
 							var barData = response['values'];
