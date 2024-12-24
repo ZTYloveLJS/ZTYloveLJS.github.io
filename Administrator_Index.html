@@ -24,7 +24,7 @@
 						type: 'POST',
 						dataType: 'json',
 						data: {
-							Grade:
+							Grade: document.getElementById('Grade').value;
 					   	},
 						success: function (response) {
 							var cate = response['keys'];
