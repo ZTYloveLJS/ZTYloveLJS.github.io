@@ -34,7 +34,7 @@
                            	document.getElementById("User").value = response['User'];
 				var Classes = $('#Class');
 				Classses.append('<option value="' + response['Class'][0] + '" selected="selected">' + response['Class'][0] + '</option>');
-				for(var i = 1;i < response['Class'].length;i++({
+				for(var i = 1;i < response['Class'].length;i++){
 					Classses.append('<option value="' + response['Class'][i] + '" >' + response['Class'][i] + '</option>');
 				}
                         } else {
