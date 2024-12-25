@@ -32,7 +32,7 @@
                         if (response['res'])
                         {
                            	document.getElementById("User").value = response['User'];
-				var Classes = document.getElementById("Classes");
+				var Classes = $('#Class');
 				Classes.append('<option value="' + response['Class'][0] + '" selected="selected">' + response['Class'][0] + '</option>');
 				for(var i = 1;i < response['Class'].length;i++){
 					Classses.append('<option value="' + response['Class'][i] + '" >' + response['Class'][i] + '</option>');
