@@ -31,7 +31,12 @@
 			$.hideLoading();
                         if (response['res'])
                         {
-                            document.getElementById("User").value = response['User'];
+                           	document.getElementById("User").value = response['User'];
+				var Classes = $('#Class');
+				Classses.append('<option value="' + response['Class'][0] + '" selected="selected">' + response['Class'][0] + '</option>'
+				for(var i = 1;i < response['Class'].length;i++({
+					Classses.append('<option value="' + response['Class'][i] + '" >' + response['Class'][i] + '</option>'
+				}
                         } else {
                             $.toast(response['message'], "forbidden");
                             setTimeout("$.removeCookie('Session');location.href='Login.html'",1000);
@@ -221,18 +226,11 @@
                         <option value="2022级10班">2022级10班</option>
                         <option value="2022级11班">2022级11班</option>
 	    </optgroup> -->
-		<optgroup label="七年级">
                         <option value="七年级_A队伍" selected="selected">A队伍</option>
-                        <option value="七年级_B队伍">B队伍</option>
-                        <option value="七年级_C队伍">C队伍</option>
-                        <option value="七年级_D队伍">D队伍</option>
-	    </optgroup>
-	    <optgroup label="八年级">
                         <option value="八年级_A队伍">A队伍</option>
                         <option value="八年级_B队伍">B队伍</option>
                         <option value="八年级_C队伍">C队伍</option>
                         <option value="八年级_D队伍">D队伍</option>
-	    </optgroup>
                     </select>
                 </div>
             </div>
