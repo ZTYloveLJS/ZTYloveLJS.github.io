@@ -35,7 +35,7 @@
 				var Classes = $('#Class');
 				Classes.append('<option value="' + response['Class'][0] + '" selected="selected">' + response['Class'][0] + '</option>');
 				for(var i = 1;i < response['Class'].length;i++){
-					Classses.append('<option value="' + response['Class'][i] + '" >' + response['Class'][i] + '</option>');
+					Classes.append('<option value="' + response['Class'][i] + '" >' + response['Class'][i] + '</option>');
 				}
                         } else {
                             $.toast(response['message'], "forbidden");
