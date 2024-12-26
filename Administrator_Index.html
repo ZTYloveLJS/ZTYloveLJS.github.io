@@ -193,12 +193,12 @@
 						type: 'POST',
 						dataType: 'json',
 						data: {
-							Grade: '八年级'
+							Grade: '七年级'
 					   	},
 						success: function (response) {
 							var cate = response['keys'];
 							var barData = response['values'];
-							var myChart = echarts.init(document.getElementById('Grade_Eight'));
+							var myChart = echarts.init(document.getElementById('Grade_Seven'));
 							var option = {
 								title: {
 									text: response['title'],
@@ -313,7 +313,7 @@
 							Search_Data();
 						},
 						error: function () {
-							var myChart = echarts.init(document.getElementById('Grade_Eight'))
+							var myChart = echarts.init(document.getElementById('Grade_Seven'))
 							var option = {
 								title: {
 									text: "拉取数据失败！",
@@ -354,6 +354,8 @@
 							});
 							Search_Data();
 						}
+					
+					});
 		}, 750)
 	}
 	</script>
