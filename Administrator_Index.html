@@ -24,12 +24,12 @@
 						type: 'POST',
 						dataType: 'json',
 						data: {
-							Grade: '七年级'
+							Grade: document.getElementById('Grade').value
 					   	},
 						success: function (response) {
 							var cate = response['keys'];
 							var barData = response['values'];
-							var myChart = echarts.init(document.getElementById('Grade_Seven'));
+							var myChart = echarts.init(document.getElementById('main'));
 							var option = {
 								title: {
 									text: response['title'],
@@ -144,7 +144,7 @@
 							Search_Data();
 						},
 						error: function () {
-							var myChart = echarts.init(document.getElementById('Grade_Seven'))
+							var myChart = echarts.init(document.getElementById('main'))
 							var option = {
 								title: {
 									text: "拉取数据失败！",
@@ -185,176 +185,6 @@
 							});
 							Search_Data();
 						}
-					
-					});
-			$.ajax(
-					{
-						url: 'https://api.ldfzxxsh.cyou/Administrator/Search',
-						type: 'POST',
-						dataType: 'json',
-						data: {
-							Grade: '七年级'
-					   	},
-						success: function (response) {
-							var cate = response['keys'];
-							var barData = response['values'];
-							var myChart = echarts.init(document.getElementById('Grade_Seven'));
-							var option = {
-								title: {
-									text: response['title'],
-									textStyle: {
-										fontStyle: 'normal',
-										fontWeight: "bolder",
-										fontSize: 27
-									},
-									subtext: '技术支持：2023级10班朱天宇',
-									subtextStyle: {
-										fontStyle: 'normal',
-										fontSize: 17,
-										fontWeight: 'normal'
-									},
-									left:"center",
-									top: "2.5%"
-								},
-								tooltip: {
-									trigger: "axis",
-									axisPointer: {
-										type: "shadow",
-									},
-								},
-								//图表位置
-								grid: {
-									left: "3%",
-									right: "4%",
-									bottom: "3%",
-									containLabel: true,
-								},
-								//X轴
-								xAxis: {
-									type: "value",
-									axisLine: {
-										show: false,
-									},
-									axisTick: {
-										show: false,
-									},
-									//不显示X轴刻度线和数字
-									splitLine: {show: false},
-									axisLabel: {show: false},
-								},
-								yAxis: {
-									type: "category",
-									data: cate,
-									splitLine: {show: false},
-									axisLine: {
-										show: false,
-									},
-									axisTick: {
-										show: false,
-									},
-									//key和图间距
-									offset: 10,
-									//动画部分
-									animationDuration: 300,
-									animationDurationUpdate: 300,
-									//key文字大小
-									nameTextStyle: {
-										fontSize: 5,
-									},
-								},
-								series: [
-									{
-										//柱状图自动排序，排序自动让Y轴名字跟着数据动
-										realtimeSort: true,
-										name: "总分",
-										type: "bar",
-										data: barData,
-										barWidth: 14,
-										barGap: 10,
-										smooth: true,
-										valueAnimation: true,
-										//Y轴数字显示部分
-										label: {
-											normal: {
-												show: true,
-												position: "right",
-												valueAnimation: true,
-												offset: [5, -2],
-												textStyle: {
-													color: "#333",
-													fontSize: 13,
-												},
-											},
-										},
-										itemStyle: {
-											emphasis: {
-												barBorderRadius: 7,
-											},
-											//颜色样式部分
-											normal: {
-												barBorderRadius: 7,
-												color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
-													{offset: 0, color: "#3977E6"},
-													{offset: 1, color: "#37BBF8"},
-												]),
-											},
-										},
-									},
-								],
-								animationDuration: 0,
-								animationDurationUpdate: 3000,
-								animationEasing: "linear",
-								animationEasingUpdate: "linear",
-							};
-							myChart.setOption(option);
-							window.addEventListener("resize", function () {
-								myChart.resize();
-							});
-							Search_Data();
-						},
-						error: function () {
-							var myChart = echarts.init(document.getElementById('Grade_Seven'))
-							var option = {
-								title: {
-									text: "拉取数据失败！",
-									textStyle: {
-										fontStyle: 'normal',
-										fontWeight: "bolder",
-										fontSize: 27
-									},
-									subtext: '技术支持：2023级10班朱天宇',
-									subtextStyle: {
-										fontStyle: 'normal',
-										fontSize: 17,
-										fontWeight: 'normal'
-									},
-									left:"center",
-									top: "2.5%"
-								},
-								tooltip: {
-									trigger: "axis",
-									axisPointer: {
-										type: "shadow",
-									},
-								},
-								grid: {
-									left: "3%",
-									right: "4%",
-									bottom: "3%",
-									containLabel: true,
-								},
-								animationDuration: 0,
-								animationDurationUpdate: 3000,
-								animationEasing: "linear",
-								animationEasingUpdate: "linear",
-							};
-							myChart.setOption(option);
-							window.addEventListener("resize", function () {
-								myChart.resize();
-							});
-							Search_Data();
-						}
-					
 					});
 		}, 750)
 	}
@@ -383,10 +213,7 @@
 	<option value="七年级" selected="selected">七年级</option>
 	<option value="八年级">八年级</option>
 </select>
-<div style="width: calc(92.5vw); height:calc(95vh); margin:auto; background-color:white; border-radius:15px; margin-top:calc(2.5vh)">
-<div id="Grade_Seven" style="width: 50%; height: 97.5%; margin:auto; background-color:white; display:inline-block;"></div>
-<div id="Grade_Eight" style="width: 50%; height: 97.5%; margin:auto; background-color:white; display:inline-block;"></div>
-</div>
+<div id="main" style="width: calc(92.5vw); height:calc(95vh); margin:auto; background-color:white; border-radius:15px; margin-top:calc(2.5vh)"></div>
 </body>
 <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
 <script type="text/javascript" src="./js/jquery.basictable.min.js"></script>
