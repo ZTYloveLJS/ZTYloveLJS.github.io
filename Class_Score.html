@@ -56,7 +56,7 @@
     }
     Upload = function()
     {
-        if (document.getElementById("Score").value !== "" && document.getElementById("Score").value <= 10 && document.getElementById("Score").value >= 0 && document.getElementById("Class").value != null)
+        if (document.getElementById("Score").value !== "" && document.getElementById("Score").value >= 0 && document.getElementById("Class").value != null)
         {
             $.confirm("您确定要提交吗?", "提交", function() {
                 Decrypt_User();
@@ -185,54 +185,13 @@
             <div class="weui-cell">
                 <div class="weui-cell__hd" align="center"><label class="weui-label">队伍<span class="required-star">*</span></label></div>
                 <div class="weui-cell__bd">
-                    <select class="filter-box" id="Class">
-<!-- 	    <optgroup label="2024级">
-                        <option value="2024级1班" selected="selected">2024级1班</option>
-                        <option value="2024级2班">2024级2班</option>
-                        <option value="2024级3班">2024级3班</option>
-                        <option value="2024级4班">2024级4班</option>
-                        <option value="2024级5班">2024级5班</option>
-                        <option value="2024级6班">2024级6班</option>
-                        <option value="2024级7班">2024级7班</option>
-                        <option value="2024级8班">2024级8班</option>
-                        <option value="2024级9班">2024级9班</option>
-                        <option value="2024级10班">2024级10班</option>
-                        <option value="2024级11班">2024级11班</option>
-                        <option value="2024级12班">2024级12班</option>
-	    </optgroup>
-	    <optgroup label="2023级">
-                        <option value="2023级1班">2023级1班</option>
-                        <option value="2023级2班">2023级2班</option>
-                        <option value="2023级3班">2023级3班</option>
-                        <option value="2023级4班">2023级4班</option>
-                        <option value="2023级5班">2023级5班</option>
-                        <option value="2023级6班">2023级6班</option>
-                        <option value="2023级7班">2023级7班</option>
-                        <option value="2023级8班">2023级8班</option>
-                        <option value="2023级9班">2023级9班</option>
-                        <option value="2023级10班">2023级10班</option>
-                        <option value="2023级11班">2023级11班</option>
-	    </optgroup>
-	    <optgroup label="2022级">
-                        <option value="2022级1班">2022级1班</option>
-                        <option value="2022级2班">2022级2班</option>
-                        <option value="2022级3班">2022级3班</option>
-                        <option value="2022级4班">2022级4班</option>
-                        <option value="2022级5班">2022级5班</option>
-                        <option value="2022级6班">2022级6班</option>
-                        <option value="2022级7班">2022级7班</option>
-                        <option value="2022级8班">2022级8班</option>
-                        <option value="2022级9班">2022级9班</option>
-                        <option value="2022级10班">2022级10班</option>
-                        <option value="2022级11班">2022级11班</option>
-	    </optgroup> -->
-                    </select>
+                    <select class="filter-box" id="Class"></select>
                 </div>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd" align="center"><label class="weui-label">评分结果<span class="required-star">*</span></label></div>
                 <div class="weui-cell__bd">
-                    <input autocomplete="off" class="weui-input" id="Score" placeholder="分数" type="number" max="10" min="0" value="">
+                    <input autocomplete="off" class="weui-input" id="Score" placeholder="分数" type="number" value="">
                 </div>
             </div>
         </div>
