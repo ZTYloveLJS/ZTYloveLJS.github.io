@@ -33,6 +33,7 @@
                         {
                            	document.getElementById("User").value = response['User'];
 				var Classes = $('#Class');
+				Classes.remove();
 				Classes.append('<option value="' + response['Class'][0] + '" selected="selected">' + response['Class'][0] + '</option>');
 				for(var i = 1;i < response['Class'].length;i++){
 					Classes.append('<option value="' + response['Class'][i] + '" >' + response['Class'][i] + '</option>');
@@ -75,10 +76,8 @@
                             if (response['res'])
                             {
                                 $.toast("提交成功!");
-                                setTimeout("window.location.reload()",1000);
                             } else {
                                 $.alert(response['message']);
-				setTimeout("window.location.reload()",1000);
                             }
                         },
                         error: function()
