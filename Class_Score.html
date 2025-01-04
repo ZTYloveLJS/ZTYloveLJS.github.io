@@ -60,7 +60,6 @@
         if (document.getElementById("Score").value !== "" && document.getElementById("Score").value >= 0 && document.getElementById("Class").value != null)
         {
             $.confirm("您确定要提交吗?", "提交", function() {
-                Decrypt_User();
                 $.ajax(
                     {
                         url: 'https://api.ldfzxxsh.cyou/upload/Class_Score',
@@ -79,6 +78,8 @@
                             } else {
                                 $.alert(response['message']);
                             }
+			    document.getElementById("Score").value = null;
+			    Decrypt_User();
                         },
                         error: function()
                         {
