@@ -1,222 +1,220 @@
 <!DOCTYPE html>
 <html>
 <body onload="Search_Data();"></body>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
-    <link href="css/weui.min.css" rel="stylesheet">
-    <link href="css/jquery-weui.css" rel="stylesheet">
-    <link href="css/weixin_lv.css" rel="stylesheet">
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery-weui.min.js"></script>
-    <script src="js/weui.min.js"></script>
-    <script src="js/jquery.cookie.min.js"></script>
-    <title>贵阳一中李端棻中学欢迎您！</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.3.0/echarts.min.js"></script>
-    <script>
-	if (/Mobi|Android|iPhone/i.test(navigator.userAgent)) {
-		alert('建议使用电脑或将手机横屏观看!');
-	}
-	var Search_Data = function () {
-		setTimeout(function () {
-			$.ajax(
-					{
-						url: 'https://api.ldfzxxsh.cyou/Administrator/Get',
-						type: 'POST',
-						dataType: 'json',
-						data: {
-							Grade: document.getElementById('Grade').value
-					   	},
-						success: function (response) {
-							var cate = response['keys'];
-							var barData = response['values'];
-							var myChart = echarts.init(document.getElementById('main'));
-							var option = {
-								title: {
-									text: response['title'],
-									textStyle: {
-										fontStyle: 'normal',
-										fontWeight: "bolder",
-										fontSize: 27
-									},
-									subtext: '技术支持：2023级10班朱天宇',
-									subtextStyle: {
-										fontStyle: 'normal',
-										fontSize: 17,
-										fontWeight: 'normal'
-									},
-									left:"center",
-									top: "2.5%"
-								},
-								tooltip: {
-									trigger: "axis",
-									axisPointer: {
-										type: "shadow",
-									},
-								},
-								//图表位置
-								grid: {
-									left: "3%",
-									right: "4%",
-									bottom: "3%",
-									containLabel: true,
-								},
-								//X轴
-								xAxis: {
-									type: "value",
-									axisLine: {
-										show: false,
-									},
-									axisTick: {
-										show: false,
-									},
-									//不显示X轴刻度线和数字
-									splitLine: {show: false},
-									axisLabel: {show: false},
-								},
-								yAxis: {
-									type: "category",
-									data: cate,
-									splitLine: {show: false},
-									axisLine: {
-										show: false,
-									},
-									axisTick: {
-										show: false,
-									},
-									//key和图间距
-									offset: 10,
-									//动画部分
-									animationDuration: 300,
-									animationDurationUpdate: 300,
-									//key文字大小
-									nameTextStyle: {
-										fontSize: 5,
-									},
-								},
-								series: [
-									{
-										//柱状图自动排序，排序自动让Y轴名字跟着数据动
-										realtimeSort: true,
-										name: "总分",
-										type: "bar",
-										data: barData,
-										barWidth: 14,
-										barGap: 10,
-										smooth: true,
-										valueAnimation: true,
-										//Y轴数字显示部分
-										label: {
-											normal: {
-												show: true,
-												position: "right",
-												valueAnimation: true,
-												offset: [5, -2],
-												textStyle: {
-													color: "#333",
-													fontSize: 13,
-												},
-											},
-										},
-										itemStyle: {
-											emphasis: {
-												barBorderRadius: 7,
-											},
-											//颜色样式部分
-											normal: {
-												barBorderRadius: 7,
-												color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
-													{offset: 0, color: "#3977E6"},
-													{offset: 1, color: "#37BBF8"},
-												]),
-											},
-										},
-									},
-								],
-								animationDuration: 0,
-								animationDurationUpdate: 3000,
-								animationEasing: "linear",
-								animationEasingUpdate: "linear",
-							};
-							myChart.setOption(option);
-							window.addEventListener("resize", function () {
-								myChart.resize();
-							});
-							Search_Data();
-						},
-						error: function () {
-							var myChart = echarts.init(document.getElementById('main'))
-							var option = {
-								title: {
-									text: "拉取数据失败！",
-									textStyle: {
-										fontStyle: 'normal',
-										fontWeight: "bolder",
-										fontSize: 27
-									},
-									subtext: '技术支持：2023级10班朱天宇',
-									subtextStyle: {
-										fontStyle: 'normal',
-										fontSize: 17,
-										fontWeight: 'normal'
-									},
-									left:"center",
-									top: "2.5%"
-								},
-								tooltip: {
-									trigger: "axis",
-									axisPointer: {
-										type: "shadow",
-									},
-								},
-								grid: {
-									left: "3%",
-									right: "4%",
-									bottom: "3%",
-									containLabel: true,
-								},
-								animationDuration: 0,
-								animationDurationUpdate: 3000,
-								animationEasing: "linear",
-								animationEasingUpdate: "linear",
-							};
-							myChart.setOption(option);
-							window.addEventListener("resize", function () {
-								myChart.resize();
-							});
-							Search_Data();
-						}
-					});
-		}, 750)
-	}
-	</script>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+	<link href="css/weui.min.css" rel="stylesheet">
+	<link href="css/jquery-weui.css" rel="stylesheet">
+	<link href="css/weixin_lv.css" rel="stylesheet">
+	<link href="css/layer.css" rel="stylesheet">
+	<link rel="stylesheet" href="./css/theme/default/layer.css">
+	<link rel="stylesheet" type="text/css" href="./css/reponse.css">
+	<link rel="stylesheet" type="text/css" href="./css/lib/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="./css/custom.css">
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery-weui.min.js"></script>
+	<script src="js/weui.min.js"></script>
+	<script src="js/jquery.cookie.min.js"></script>
+	<title>贵阳一中李端棻中学欢迎您！</title>
 	<style>
-	body {
-		background: url("https://api.ldfzxxsh.cyou/Image/BackGround") no-repeat center center fixed;
-		-webkit-background-size: cover;
-		-o-background-size: cover;
-		background-size: cover;
-		background-position: center;
-	}
-	.select {
-		background-image: url(./image/backdropdown.png);
-		background-position: calc(60vw - 20px) 9px;
-		font-size: 15px;
-		color: #3d3d3d;
-		background-repeat: no-repeat;
-	}
+		table img {
+			height: calc(15vh);
+			width: auto;
+		}
+
+		.alertceng{
+			background: #FFFFFF;
+			padding: 10px;
+			display: none;
+		}
+
+		.alertceng span.title{
+			margin-right: 10px;
+		}
+
+		select {
+			background-image: url(./image/backdropdown.png);
+			background-position: 222px 9px;
+			font-size: 15px;
+			color: #3d3d3d;
+			background-repeat: no-repeat;
+		}
+
+		table{
+			width: calc(90vw);
+			border-collapse: collapse;
+		}
+
+		table caption{
+			font-size: 2em;
+			font-weight: bold;
+			margin: 1em 0;
+		}
+
+		th,td{
+			border: 1px solid #999;
+			text-align: center;
+			padding: 20px 0;
+		}
+
+		table thead tr{
+			background-color: #008c8c;
+			color: #fff;
+		}
+
+		table tbody tr:nth-child(odd){
+			background-color: #eee;
+		}
+
+		table tbody tr:hover{
+			background-color: #ccc;
+		}
+
+		table tfoot tr td{
+			text-align: right;
+			padding-right: 10px;
+		}
 	</style>
 </head>
-
-
 <body>
-<select class="filter-box" id="Grade">
-	<option value="七年级" selected="selected">七年级</option>
-	<option value="八年级">八年级</option>
-</select>
-<div id="main" style="width: calc(92vw); height:calc(95vh); margin:auto; background-color:white; border-radius:15px; margin-top:calc(2.5vh)"></div>
+	<div class="layui-fluid layadmin-homepage-fluid" style="background: #fff;width:90%;margin:0 auto;">
+		<div id="page">
+			<h1>李端棻中学综合型评分管理系统</h1>
+			<table>
+				<caption>评分记录明细表</caption>
+				<thead>
+					<tr>
+						<th>序号</th>
+						<th>操作人</th>
+						<th>操作对象</th>
+						<th>操作分值</th>
+						<th>操作时间</th>
+						<th>数据验证码</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody id="Score_Info">
+				</tbody>
+			</table><br><br><br>
+			<legend>评分记录查询</legend>
+			<div class="control-group">
+  				<div class="controls">
+    				<input id="Search_Input" type="text" class="input-xlarge" placeholder="search">
+    				<button class="layui-btn" onclick="SearchByUser();">操作人查询</button>
+            		<button class="layui-btn" onclick="SearchByClass();">操作对象查询</button>
+  				</div>
+			</div>
+			<table>
+				<caption>查询结果明细表</caption>
+				<thead>
+				<tr>
+					<th>序号</th>
+					<th>操作人</th>
+					<th>操作对象</th>
+					<th>操作分值</th>
+					<th>操作时间</th>
+					<th>数据验证码</th>
+					<th>操作</th>
+				</tr>
+				</thead>
+				<tbody id="Search_Info">
+				</tbody>
+			</table>
+			<legend><h6>Copyright © 2024 Liduanfen Middle School.</h6></legend>
+		</div>
+	</div>
 </body>
 <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
 <script type="text/javascript" src="./js/jquery.basictable.min.js"></script>
 <script type="text/javascript" src="./js/reponsetable.min.js"></script>
 <script type="text/javascript" src="js/layer.js"></script>
+<script type="text/javascript">
+	function Search_Data() {
+		setTimeout(function () {
+			$.ajax(
+					{
+						url: 'https://api.ldfzxxsh.cyou/Administrator/Search',
+						type: 'POST',
+						dataType: 'json',
+						data: {
+							'Session': 'Test'
+						},
+						success: function (response) {
+							$('#Score_Info').empty();
+							for (var i = 0; i <= response.length; i++) {
+								$('#Score_Info').append('<tr><td>' + String(i + 1) + '</td><td>' + response[i]['User'] + '</td><td>' + response[i]['Class'] + '</td><td>' + response[i]['Score'] + '</td><td>' + response[i]['Time'] + '</td><td>' + response[i]['Check_Code'] + '</td><td><button class="layui-btn" onclick="Delete_Data(`' + response[i]['Check_Code'] + '`);">删除</button></td></tr>');
+							}
+						},
+						error: function () {
+							alert('数据接口异常!');
+						}
+					});
+					Search_Data();
+		}, 1000)
+	}
+	function Delete_Data(Check_Code) {
+		$.ajax(
+			{
+				url: 'https://api.ldfzxxsh.cyou/Administrator/Delete',
+				type: 'POST',
+				dataType: 'json',
+				data:{
+					Check_Code: Check_Code
+				},
+				success: function(response)
+				{
+					alert(response['message']);
+				},
+				error: function()
+				{
+					alert('MySQL操作失败!');
+				}
+			});
+	}
+    function SearchByUser() {
+        $.ajax(
+            {
+                url: 'https://api.ldfzxxsh.cyou/Administrator/SearchByUser',
+                type: 'POST',
+                dataType: 'json',
+                data:{
+                    User: document.getElementById('Search_Input').value
+                },
+                success: function(response)
+                {
+                    $('#Search_Info').empty();
+                    for (var i = 0; i <= response.length; i++) {
+                        $('#Search_Info').append('<tr><td>' + String(i + 1) + '</td><td>' + response[i]['User'] + '</td><td>' + response[i]['Class'] + '</td><td>' + response[i]['Score'] + '</td><td>' + response[i]['Time'] + '</td><td>' + response[i]['Check_Code'] + '</td><td><button class="layui-btn" onclick="Delete_Data(`' + response[i]['Check_Code'] + '`);">删除</button></td></tr>');
+                    }
+                },
+                error: function()
+                {
+                    alert('服务器连接失败!');
+                }
+            });
+    }
+    function SearchByClass() {
+        $.ajax(
+            {
+                url: 'https://api.ldfzxxsh.cyou/Administrator/SearchByClass',
+                type: 'POST',
+                dataType: 'json',
+                data:{
+                    Class: document.getElementById('Search_Input').value
+                },
+                success: function(response)
+                {
+                    $('#Search_Info').empty();
+                    for (var i = 0; i <= response.length; i++) {
+                        $('#Search_Info').append('<tr><td>' + String(i + 1) + '</td><td>' + response[i]['User'] + '</td><td>' + response[i]['Class'] + '</td><td>' + response[i]['Score'] + '</td><td>' + response[i]['Time'] + '</td><td>' + response[i]['Check_Code'] + '</td><td><button class="layui-btn" onclick="Delete_Data(`' + response[i]['Check_Code'] + '`);">删除</button></td></tr>');
+                    }
+                },
+                error: function()
+                {
+                    alert('服务器连接失败!');
+                }
+            });
+    }
+</script>
 </html>
