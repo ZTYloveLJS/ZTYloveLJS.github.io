@@ -1,1 +1,214 @@
+<!DOCTYPE html>
+<html class="pixel-ratio-1">
+<body onload="Decrypt_User()"></body>
+<head>
+    <title>贵阳一中李端棻中学欢迎您！</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link href="css/weui.min.css" rel="stylesheet">
+    <link href="css/jquery-weui.css" rel="stylesheet">
+    <link href="css/weixin_lv.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-weui.min.js"></script>
+    <script src="js/weui.min.js"></script>
+    <script src="js/jquery.cookie.min.js"></script>
+    <script>
+    Decrypt_User = function()
+    {
+	$.showLoading();
+        if ($.cookie('Session') != null)
+        {
+            $.ajax(
+                {
+                    url: 'https://api.ldfzxxsh.cyou/decrypt/User',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        Session: $.cookie('Session')
+                    },
+                    success: function(response)
+                    {
+			$.hideLoading();
+                        if (response['res'])
+                        {
+                           	document.getElementById("User").value = response['User'];
+				document.getElementById("Class").innerHTML = "";
+				var Classes = $('#Class');
+				Classes.append('<option value="' + response['Class'][0] + '" selected="selected">' + response['Class'][0] + '</option>');
+				for(var i = 1;i < response['Class'].length;i++){
+					Classes.append('<option value="' + response['Class'][i] + '" >' + response['Class'][i] + '</option>');
+				}
+                        } else {
+                            $.toast(response['message'], "forbidden");
+                            setTimeout("$.removeCookie('Session');location.href='Login.html'",1000);
+                        }
+                    },
+                    error: function()
+                    {
+			$.hideLoading();
+                        $.toast("服务器异常！", "forbidden");
+                    }
+                });
+        } else {
+		$.hideLoading();
+                $.toast("您还未登录！", "forbidden");
+                setTimeout("location.href='Login.html'",1000);
+	}
+    }
+    Upload = function()
+    {
+        if (document.getElementById("Score").value !== "" && document.getElementById("Score").value >= 0 && document.getElementById("Class").value != null)
+        {
+            $.confirm("您确定要提交吗?", "提交", function() {
+                $.ajax(
+                    {
+                        url: 'https://api.ldfzxxsh.cyou/upload/Class_Score',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: {
+                            Session: $.cookie('Session'),
+                            Class: document.getElementById("Class").value,
+                            Score: document.getElementById("Score").value
+                        },
+                        success: function(response)
+                        {
+                            if (response['res'])
+                            {
+                                $.toast("提交成功!");
+                            } else {
+                                $.alert(response['message']);
+                            }
+			    document.getElementById("Score").value = null;
+			    Decrypt_User();
+                        },
+                        error: function()
+                        {
+                            $.toast("服务器异常！", "forbidden");
+                        }
+                    })
+            }, function() {
+                $.toast("已取消操作", "cancel");
+            });
+        }else{
+            $.alert('请正确填写内容!');
+        }
+    }
+</script>
+        <style>
+            .filter-box {
+                width: calc(60vw);
+                height: 34px;
+                background-color: #ffffff;
+                border: solid 1px #dcdcdc;
+                font-size: 15px;
+                font-weight: normal;
+                font-style: normal;
+                font-stretch: normal;
+                letter-spacing: normal;
+                text-align: left;
+                color: #3d3d3d;
+                padding-left: 10px;
+                border-color: #dcdcdc;
+                -webkit-appearance: none;
+            }
 
+            select {
+                background-image: url(./image/backdropdown.png);
+                background-position: calc(60vw - 20px) 9px;
+                font-size: 15px;
+                color: #3d3d3d;
+                background-repeat: no-repeat;
+            }
+
+            .required-star {
+                color: red;
+            }
+
+            @-webkit-keyframes spin {
+                to {
+                    -webkit-transform: rotate(360deg);
+                    transform: rotate(360deg);
+                }
+            }
+
+            @keyframes spin {
+                to {
+                    -webkit-transform: rotate(360deg);
+                    transform: rotate(360deg);
+                }
+            }
+
+            .div-waiting{
+                position: fixed;
+                z-index: 998;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                opacity: 1;
+                background: rgba(255, 255, 255, 0.5);
+                vertical-align: middle;
+                text-align: center;
+            }
+
+            .icon-waiting{
+                position: relative;
+                top: calc(35vh);
+                width: calc(10vh);
+                height: calc(10vh);
+                margin: 0 auto;
+                border-radius: 50%;
+                border: 0.5rem solid rgb(225, 225, 225);
+                border-top-color: #1cac19;
+                -webkit-animation: 1.5s spin infinite linear;
+                animation: 1.5s spin infinite linear;
+            }
+
+            .icon-position{
+                position: relative;
+                top: 48%;
+                margin: 0 auto;
+                font-size: 30px;
+            }
+        </style>
+    </head>
+
+
+<div class="tab1">
+    <div class="weui-cells__title">请输入评分信息进行提交
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__hd" align="center"><label class="weui-label">账号<span class="required-star">*</span></label></div>
+                <div class="weui-cell__bd">
+                    <input readonly="readonly" autocomplete="off" class="weui-input" id="User" placeholder="账号" type="text" value="">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd" align="center"><label class="weui-label">队伍<span class="required-star">*</span></label></div>
+                <div class="weui-cell__bd">
+                    <select class="filter-box" id="Class"></select>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd" align="center"><label class="weui-label">评分结果<span class="required-star">*</span></label></div>
+                <div class="weui-cell__bd">
+                    <input autocomplete="off" class="weui-input" id="Score" placeholder="分数" type="number" value="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<p class="weui-btn-area" align="center">
+    <a class="weui-btn weui-btn_primary" href="javascript:Upload()">提交</a>
+    <br>
+    <a class="weui-btn weui-btn_primary" href="javascript:$.removeCookie('Session');location.href='Login.html'">退出登录</a>
+    <br>
+    <a class="weui-btn weui-btn_primary" href="javascript:location.href='Change_Password.html'">修改密码</a>
+    <br>
+    <font color="#9999CC">技术支持：2023级10班朱天宇</font>
+    <br>
+    <font color="#9999CC">Copyright © 2024 Liduanfen Middle School.</font>
+    <br>
+    <a href="https://beian.miit.gov.cn" id="beian" target="_blank" style="color:#9999CC;">备案号申请中...</a>
+</p>
+</html>
