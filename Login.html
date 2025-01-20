@@ -76,11 +76,11 @@
                     error: function()
                     {
                         $.hideLoading();
-                        $.toast("服务器异常！", "forbidden");
+                        $.toast("服务器异常", "forbidden");
                     }
                 });
         } else {
-            $.alert('请完整填写身份信息!');
+            $.alert('请完整填写身份信息');
         }
     }
     Decrypt_User = function()
@@ -101,7 +101,7 @@
                     {
                         location.href = response['Path'];
                     } else {
-                        $.toast("登录已过期！", "forbidden");
+                        $.toast("登录已过期", "forbidden");
                         setTimeout("$.removeCookie('Session');location.href='Login.html'",1000);
                     }
                 }
