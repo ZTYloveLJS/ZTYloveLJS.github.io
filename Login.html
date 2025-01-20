@@ -101,7 +101,7 @@
                 {
                     if (response['res'])
                     {
-                        location.href = response['path'];
+                        location.href = response['Path'];
                     } else {
                         $.toast("登录已过期！", "forbidden");
                         setTimeout("$.removeCookie('Session');location.href='Login.html'",1000);
