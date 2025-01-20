@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<body onload="Search_Data();"></body>
+<body onload="Decrypt_User();"></body>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
@@ -125,11 +125,50 @@
 		</div>
 	</div>
 </body>
-<script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
-<script type="text/javascript" src="./js/jquery.basictable.min.js"></script>
-<script type="text/javascript" src="./js/reponsetable.min.js"></script>
-<script type="text/javascript" src="js/layer.js"></script>
+<link href="css/weui.min.css" rel="stylesheet">
+<link href="css/jquery-weui.css" rel="stylesheet">
+<link href="css/weixin_lv.css" rel="stylesheet">
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-weui.min.js"></script>
+<script src="js/weui.min.js"></script>
+<script src="js/jquery.cookie.min.js"></script>
 <script type="text/javascript">
+	Decrypt_User = function()
+	{
+		$.showLoading();
+		if ($.cookie('Session') != null)
+		{
+			$.ajax(
+					{
+						url: 'https://api.ldfzxxsh.cyou/decrypt/User',
+						type: 'POST',
+						dataType: 'json',
+						data: {
+							Session: $.cookie('Session')
+						},
+						success: function(response)
+						{
+							$.hideLoading();
+							if (response['res'] && (window.location.pathname === response['Path']))
+							{
+								Search_Data();
+							} else {
+								$.toast(response['message'], "forbidden");
+								setTimeout("$.removeCookie('Session');location.href='Login.html'",1000);
+							}
+						},
+						error: function()
+						{
+							$.hideLoading();
+							$.toast("服务器异常！", "forbidden");
+						}
+					});
+		} else {
+			$.hideLoading();
+			$.toast("您还未登录！", "forbidden");
+			setTimeout("location.href='Login.html'",1000);
+		}
+	}
 	function Search_Data() {
 		setTimeout(function () {
 			$.ajax(
