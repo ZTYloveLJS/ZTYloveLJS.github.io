@@ -70,7 +70,7 @@
                         if (response['res'])
                         {
                             $.cookie('Session', response['Session']);
-                            location.href = response['path'];
+                            location.href = response['Path'];
                         } else {
                             $.alert(response['message']);
                         }
