@@ -4,6 +4,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+    Login = function()
+    {
+        var User = document.getElementById("User").value;
+        var Password = document.getElementById("Password").value;
+        if (User !== '' && Password !== '')
+        {
+            $.showLoading();
+            $.ajax(
+                {
+                    url: 'https://api.ldfzxxsh.cyou/login',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        User: User,
+                        Password: Password
+                    },
+                    success: function(response)
+                    {
+                        $.hideLoading();
+                        if (response['res'])
+                        {
+                            $.cookie('Session', response['Session']);
+                            location.href = response['Path'];
+                        } else {
+                            $.alert(response['message']);
+                        }
+                    },
+                    error: function()
+                    {
+                        $.hideLoading();
+                        $.toast("服务器异常！", "forbidden");
+                    }
+                });
+        } else {
+            $.alert('请完整填写身份信息!');
+        }
+    }
+    Decrypt_User = function()
+    {
+        if ($.cookie('Session') != null)
+        {
+            $.ajax(
+            {
+                url: 'https://api.ldfzxxsh.cyou/decrypt/User',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    Session: $.cookie('Session')
+                },
+                success: function(response)
+                {
+                    if (response['res'])
+                    {
+                        location.href = response['Path'];
+                    } else {
+                        $.toast("登录已过期！", "forbidden");
+                        setTimeout("$.removeCookie('Session');location.href='Login.html'",1000);
+                    }
+                }
+            });
+        }
+    }
+</script>
     <style>
         /* 清除浏览器默认边距，
 使边框和内边距的值包含在元素的width和height内 */
