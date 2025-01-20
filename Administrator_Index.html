@@ -160,12 +160,12 @@
 						error: function()
 						{
 							$.hideLoading();
-							$.toast("服务器异常！", "forbidden");
+							$.toast("服务器异常", "forbidden");
 						}
 					});
 		} else {
 			$.hideLoading();
-			$.toast("您还未登录！", "forbidden");
+			$.toast("您还未登录", "forbidden");
 			setTimeout("location.href='Login.html'",1000);
 		}
 	}
@@ -186,7 +186,7 @@
 							}
 						},
 						error: function () {
-							alert('数据接口异常!');
+							alert('数据接口异常');
 						}
 					});
 					Search_Data();
