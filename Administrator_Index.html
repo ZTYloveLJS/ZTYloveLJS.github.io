@@ -186,7 +186,7 @@
 							}
 						},
 						error: function () {
-							alert('数据接口异常');
+							$.alert('数据接口异常');
 						}
 					});
 					Search_Data();
@@ -203,11 +203,11 @@
 				},
 				success: function(response)
 				{
-					alert(response['message']);
+					$.alert(response['message']);
 				},
 				error: function()
 				{
-					alert('MySQL操作失败!');
+					$.alert('MySQL操作失败!');
 				}
 			});
 	}
@@ -229,7 +229,7 @@
                 },
                 error: function()
                 {
-                    alert('服务器连接失败!');
+                    $.alert('服务器连接失败');
                 }
             });
     }
@@ -251,7 +251,7 @@
                 },
                 error: function()
                 {
-                    alert('服务器连接失败!');
+                    $'alert('服务器连接失败');
                 }
             });
     }
