@@ -29,19 +29,25 @@
                     success: function(response)
                     {
 			$.hideLoading();
-                        if (response['res'])
-                        {
-                           	document.getElementById("User").value = response['User'];
-				document.getElementById("Class").innerHTML = "";
-				var Classes = $('#Class');
-				Classes.append('<option value="' + response['Class'][0] + '" selected="selected">' + response['Class'][0] + '</option>');
-				for(var i = 1;i < response['Class'].length;i++){
+			if (response['res'] && (window.location.pathname === response['Path']))
+			{
+			document.getElementById("User").value = response['User'];
+			document.getElementById("Class").innerHTML = "";
+			var Classes = $('#Class');
+			Classes.append('<option value="' + response['Class'][0] + '" selected="selected">' + response['Class'][0] + '</option>');
+			for(var i = 1;i < response['Class'].length;i++)
+				{
 					Classes.append('<option value="' + response['Class'][i] + '" >' + response['Class'][i] + '</option>');
 				}
-                        } else {
-                            $.toast(response['message'], "forbidden");
-                            setTimeout("$.removeCookie('Session');location.href='Login.html'",1000);
-                        }
+			} else {
+				if (window.location.pathname !== response['Path'])
+				{
+					location.href = response['Path'];
+				} else {
+					$.toast(response['message'], "forbidden");
+					setTimeout("$.removeCookie('Session');location.href='Login.html'",1000);
+				}
+			}
                     },
                     error: function()
                     {
