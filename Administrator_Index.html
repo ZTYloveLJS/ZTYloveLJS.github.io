@@ -153,8 +153,13 @@
 							{
 								Search_Data();
 							} else {
-								$.toast(response['message'], "forbidden");
-								setTimeout("$.removeCookie('Session');location.href='Login.html'",1000);
+								if (window.location.pathname !== response['Path'])
+								{
+									location.href = response['Path'];
+								} else {
+									$.toast(response['message'], "forbidden");
+									setTimeout("$.removeCookie('Session');location.href='Login.html'",1000);
+								}
 							}
 						},
 						error: function()
