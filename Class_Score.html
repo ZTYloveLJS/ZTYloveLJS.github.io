@@ -52,12 +52,12 @@
                     error: function()
                     {
 			$.hideLoading();
-                        $.toast("服务器异常！", "forbidden");
+                        $.toast("服务器异常", "forbidden");
                     }
                 });
         } else {
 		$.hideLoading();
-                $.toast("您还未登录！", "forbidden");
+                $.toast("您还未登录", "forbidden");
                 setTimeout("location.href='Login.html'",1000);
 	}
     }
@@ -89,14 +89,14 @@
                         },
                         error: function()
                         {
-                            $.toast("服务器异常！", "forbidden");
+                            $.toast("服务器异常", "forbidden");
                         }
                     })
             }, function() {
                 $.toast("已取消操作", "cancel");
             });
         }else{
-            $.alert('请正确填写内容!');
+            $.alert('请正确填写内容');
         }
     }
 </script>
@@ -215,6 +215,6 @@
     <br>
     <font color="#9999CC">Copyright © 2024 Liduanfen Middle School.</font>
     <br>
-    <a href="https://beian.miit.gov.cn" id="beian" target="_blank" style="color:#9999CC;">备案号申请中...</a>
+    <a href="https://beian.miit.gov.cn" id="beian" target="_blank" style="color:#9999CC;">黔ICP备2025043918号-1</a>
 </p>
 </html>
